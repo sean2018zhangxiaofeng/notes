@@ -1,0 +1,12 @@
+# 保存所有镜像
+例子：docker save $(docker images | grep -v REPOSITORY | awk 'BEGIN{OFS=":";ORS=" "}{print $1,$2}') -o 【镜像包名称】.tar
+
+# 打印出镜像信息，格式为【镜像名称】:【版本】
+例子：docker images | grep -v REPOSITORY | awk 'BEGIN{OFS=":";ORS=" "}{print $1,$2}'
+
+# 保存指定镜像（一个或者多个）
+# 格式：docker save 【镜像名称】:【版本】 【镜像名称】:【版本】... -o 【镜像包名称】.tar
+例子：docker save sonarqube:latest mysql:5.7.15 -o sonar-mysql.tar
+
+# 导入镜像
+例子：docker load -i 【镜像包名称】.tar
